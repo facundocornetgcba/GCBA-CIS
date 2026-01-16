@@ -3,7 +3,7 @@ name: Actualizacion diaria datos CIS
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 18 * * *'  
+    - cron: '0 18 * * *'  # 15:00 Argentina (UTC-3)
 
 jobs:
   update:
@@ -26,6 +26,9 @@ jobs:
       - name: Run update script
         run: |
           python main.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
       - name: Commit changes
         run: |
