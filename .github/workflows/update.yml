@@ -10,24 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Clonar el repo
+      # 1️⃣ Clonar el repo sin credenciales automáticas
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: false  # vamos a usar PAT manualmente
+          persist-credentials: false
 
-      # 2️⃣ Instalar Python y dependencias
+      # 2️⃣ Configurar Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
+      # 3️⃣ Instalar dependencias
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requerimientos.txt
 
-      # 3️⃣ Ejecutar el script principal con variables de entorno de Supabase
+      # 4️⃣ Ejecutar el script principal con variables de entorno de Supabase
       - name: Run update script
         run: |
           python main.py
@@ -35,15 +36,24 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
-      # 4️⃣ Commit y push usando PAT
+      # 5️⃣ Commit y push usando PAT
       - name: Commit changes
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
+          # Agregar todos los cambios
           git add .
+
+          # Mostrar qué archivos se modificaron (logs)
+          echo "Archivos modificados:"
+          git diff --cached --name-only
+
+          # Commit solo si hay cambios
           git diff --cached --quiet || git commit -m "Actualizacion automatica diaria"
-          # Push usando el PAT en la URL
+
+          # Push usando PAT en la URL
           git push https://$PAT_TOKEN@github.com/${{ github.repository }}.git
 
