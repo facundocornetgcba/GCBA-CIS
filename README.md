@@ -1,73 +1,75 @@
-📊 Sistema de Actualización de Datos CIS – GCBA
+# 📊 Sistema de Actualización de Datos CIS – GCBA
 
-Este proyecto permite sincronizar automáticamente los datos desde Google Sheets hacia la base de datos Supabase del CIS – GCBA, realizando una carga incremental (solo se suben los registros nuevos).
+Este repositorio contiene un sistema que permite **actualizar y sincronizar datos del CIS – GCBA** de manera automática, tomando información desde **Google Sheets** y cargándola en la **base de datos Supabase**.
 
-El sistema está pensado para ejecutarse de forma simple, segura y repetible.
+El objetivo principal es mantener la base siempre actualizada de forma **simple, segura y sin duplicar información**.
 
-🚀 Guía rápida para actualizar los datos
+---
 
-Cada vez que necesites actualizar la base de datos, seguí estos 3 pasos simples:
+## 🚀 Cómo actualizar los datos
 
-1️⃣ Abrir la terminal en el proyecto
+Cada vez que sea necesario actualizar la base, seguí estos pasos:
 
-Ubicate en la carpeta del proyecto y abrí una terminal:
+---
 
-Click derecho sobre la carpeta → Open in Terminal
+### 1️⃣ Abrir la terminal en la carpeta del proyecto
 
-O abrí PowerShell / Git Bash y navegá hasta la carpeta del proyecto
+Podés hacerlo de cualquiera de estas formas:
 
-2️⃣ Activar el entorno virtual
+- Click derecho sobre la carpeta del proyecto → **Open in Terminal**
+- Abrir **PowerShell** o **Git Bash** y navegar hasta la carpeta del proyecto
+
+---
+
+### 2️⃣ Activar el entorno virtual
 
 Ejecutá el siguiente comando:
 
+```powershell
 .venv\Scripts\activate
+Si el entorno se activó correctamente, vas a ver (.venv) al inicio de la línea de comandos.
 
+3️⃣ Ejecutar la actualización
+Corré el script principal:
 
-✔️ Si todo salió bien, vas a ver (.venv) al inicio de la línea de comandos.
-Eso indica que el entorno está activo y listo para usar.
-
-3️⃣ Ejecutar la actualización de datos
-
-Corré el script principal con:
-
+powershell
+Copy code
 python main.py
+El sistema comenzará a procesar los datos automáticamente y mostrará un resumen al finalizar.
 
+🔍 ¿Qué hace el sistema?
+El proceso realiza las siguientes acciones:
 
-⏳ El proceso se ejecuta automáticamente y al finalizar mostrará un resumen en pantalla.
+Lee los datos desde las hojas configuradas en Google Sheets.
 
-🔍 ¿Qué hace el programa?
+Identifica la última fecha cargada en la base de datos.
 
-El script realiza los siguientes pasos de forma automática:
+Compara los datos nuevos con los ya existentes.
 
-📥 Lee los datos desde las hojas de Google Sheets configuradas.
+Carga solo los registros nuevos (actualización incremental).
 
-🕒 Identifica la última fecha cargada en la base de datos.
+Informa en pantalla cuántos registros fueron agregados.
 
-🔄 Compara los datos nuevos contra los existentes.
+Esto garantiza que la información no se duplique y que el historial se mantenga consistente.
 
-⬆️ Carga únicamente los registros nuevos (actualización incremental).
-
-📊 Informa en pantalla cuántos registros fueron agregados.
-
-Esto evita duplicados y asegura que la base siempre esté actualizada.
-
-🛠️ Solución de problemas comunes
+🛠️ Solución de problemas
 ❌ Error de conexión
-
 Verificá que tengas conexión a internet.
 
-Revisá que el archivo .env exista y tenga las credenciales correctas.
+Revisá que el archivo .env exista y contenga las credenciales correctas.
 
 ❌ Error de librerías o módulos faltantes
-
 Si aparece un error indicando que falta algún paquete, ejecutá:
 
+powershell
+Copy code
 pip install -r requerimientos.txt
-
 ✅ Recomendaciones
-
 Ejecutar siempre el script con el entorno virtual activado.
 
-No modificar el orden ni los nombres de las hojas sin validar previamente.
+No modificar la estructura de los datos sin validarlo previamente.
 
-Ante cualquier cambio estructural en los datos, revisar el código antes de correr la actualización.
+Ante cambios importantes en las planillas, revisar el código antes de correr la actualización.
+
+📌 Notas
+Este sistema está pensado para ejecutarse de forma manual, pero puede adaptarse fácilmente para una ejecución automática programada.
