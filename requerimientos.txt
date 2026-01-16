@@ -1,0 +1,6 @@
+dotenv
+pandas
+pyarrow
+psycopg2-binary
+python-dotenv
+supabase
