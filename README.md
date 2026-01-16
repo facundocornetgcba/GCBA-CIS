@@ -25,7 +25,7 @@ Podés hacerlo de cualquiera de estas formas:
 
 Ejecutá el siguiente comando:
 
-```powershell
+powershell
 .venv\Scripts\activate
 Si el entorno se activó correctamente, vas a ver (.venv) al inicio de la línea de comandos.
 
