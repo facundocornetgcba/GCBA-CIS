@@ -31,7 +31,7 @@ powershell
 
 Si el entorno se activó correctamente, vas a ver (.venv) al inicio de la línea de comandos.
 ---
-###3️⃣ Ejecutar la actualización
+### 3️⃣ Ejecutar la actualización
 Corré el script principal:
 
 powershell
@@ -54,7 +54,7 @@ Informa en pantalla cuántos registros fueron agregados.
 
 Esto garantiza que la información no se duplique y que el historial se mantenga consistente.
 
-###🛠️ Solución de problemas
+### 🛠️ Solución de problemas
 ❌ Error de conexión
 Verificá que tengas conexión a internet.
 
@@ -67,12 +67,12 @@ powershell
 Copy code
 pip install -r requerimientos.txt
 ---
-###✅ Recomendaciones
+### ✅ Recomendaciones
 Ejecutar siempre el script con el entorno virtual activado.
 
 No modificar la estructura de los datos sin validarlo previamente.
 
 Ante cambios importantes en las planillas, revisar el código antes de correr la actualización.
 ---
-###📌 Notas
+### 📌 Notas
 Este sistema está pensado para ejecutarse de forma manual, pero puede adaptarse fácilmente para una ejecución automática programada.
