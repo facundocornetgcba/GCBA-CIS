@@ -3,7 +3,7 @@ name: Actualizacion diaria datos CIS
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 18 * * *'  # 15:00 Argentina (UTC-3)
+    - cron: '0 13 * * *'  # 10:00 Argentina (UTC-3)
 
 jobs:
   update:
