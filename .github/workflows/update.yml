@@ -3,18 +3,20 @@ name: Actualizacion diaria datos CIS
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 18 * * *'
+    - cron: '0 18 * * *'  # 15:00 Argentina (UTC-3)
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Clonar el repo
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          persist-credentials: false  # vamos a usar PAT manualmente
 
+      # 2️⃣ Instalar Python y dependencias
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -25,6 +27,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requerimientos.txt
 
+      # 3️⃣ Ejecutar el script principal con variables de entorno de Supabase
       - name: Run update script
         run: |
           python main.py
@@ -32,10 +35,14 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
+      # 4️⃣ Commit y push usando PAT
       - name: Commit changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add .
           git diff --cached --quiet || git commit -m "Actualizacion automatica diaria"
-          git push
+          git push https://$PAT_TOKEN@github.com/${{ github.repository }}.git
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
