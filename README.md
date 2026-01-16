@@ -1,45 +1,73 @@
-# Sistema de Actualización de Datos CIS - GCBA
+📊 Sistema de Actualización de Datos CIS – GCBA
 
-Este sistema permite sincronizar los datos desde Google Sheets hacia la base de datos Supabase de forma automática.
+Este proyecto permite sincronizar automáticamente los datos desde Google Sheets hacia la base de datos Supabase del CIS – GCBA, realizando una carga incremental (solo se suben los registros nuevos).
 
-## 🚀 Guía Paso a Paso para Actualizar Datos
+El sistema está pensado para ejecutarse de forma simple, segura y repetible.
 
-Sigue estos 3 pasos simples cada vez que quieras actualizar la base de datos:
+🚀 Guía rápida para actualizar los datos
 
-### 1. Abrir la terminal
+Cada vez que necesites actualizar la base de datos, seguí estos 3 pasos simples:
 
-Navega a la carpeta del proyecto. Puedes hacer clic derecho en la carpeta y seleccionar "Open in Terminal" o usar PowerShell.
+1️⃣ Abrir la terminal en el proyecto
 
-### 2. Activar el entorno virtual
+Ubicate en la carpeta del proyecto y abrí una terminal:
 
-Copia y pega este comando en la terminal y presiona Enter:
+Click derecho sobre la carpeta → Open in Terminal
 
-```powershell
+O abrí PowerShell / Git Bash y navegá hasta la carpeta del proyecto
+
+2️⃣ Activar el entorno virtual
+
+Ejecutá el siguiente comando:
+
 .venv\Scripts\activate
-```
 
-_Verás que aparece `(.venv)` verde al principio de la línea de comandos. Esto indica que estás listo._
 
-### 3. Ejecutar la actualización
+✔️ Si todo salió bien, vas a ver (.venv) al inicio de la línea de comandos.
+Eso indica que el entorno está activo y listo para usar.
 
-Ejecuta el programa principal con este comando:
+3️⃣ Ejecutar la actualización de datos
 
-```powershell
+Corré el script principal con:
+
 python main.py
-```
 
----
 
-### ¿Qué hace el programa?
+⏳ El proceso se ejecuta automáticamente y al finalizar mostrará un resumen en pantalla.
 
-1. **Lee** los datos de las hojas de Google Sheets.
-2. **Compara** con la base de datos para ver qué fecha fue la última cargada.
-3. **Sube** solo los registros nuevos (carga incremental).
-4. Te muestra en pantalla cuántos registros se agregaron.
+🔍 ¿Qué hace el programa?
 
----
+El script realiza los siguientes pasos de forma automática:
 
-## 🛠️ Solución de Problemas
+📥 Lee los datos desde las hojas de Google Sheets configuradas.
 
-- **Error de conexión**: Verifica que tengas internet y que el archivo `.env` tenga las claves correctas.
-- **Error de librerías**: Si dice que falta algún módulo, ejecuta `pip install -r requerimientos.txt`.
+🕒 Identifica la última fecha cargada en la base de datos.
+
+🔄 Compara los datos nuevos contra los existentes.
+
+⬆️ Carga únicamente los registros nuevos (actualización incremental).
+
+📊 Informa en pantalla cuántos registros fueron agregados.
+
+Esto evita duplicados y asegura que la base siempre esté actualizada.
+
+🛠️ Solución de problemas comunes
+❌ Error de conexión
+
+Verificá que tengas conexión a internet.
+
+Revisá que el archivo .env exista y tenga las credenciales correctas.
+
+❌ Error de librerías o módulos faltantes
+
+Si aparece un error indicando que falta algún paquete, ejecutá:
+
+pip install -r requerimientos.txt
+
+✅ Recomendaciones
+
+Ejecutar siempre el script con el entorno virtual activado.
+
+No modificar el orden ni los nombres de las hojas sin validar previamente.
+
+Ante cualquier cambio estructural en los datos, revisar el código antes de correr la actualización.
