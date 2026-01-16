@@ -37,12 +37,13 @@ jobs:
 
       # 4️⃣ Commit y push usando PAT
       - name: Commit changes
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add .
           git diff --cached --quiet || git commit -m "Actualizacion automatica diaria"
+          # Push usando el PAT en la URL
           git push https://$PAT_TOKEN@github.com/${{ github.repository }}.git
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
