@@ -25,18 +25,20 @@ Podés hacerlo de cualquiera de estas formas:
 
 Ejecutá el siguiente comando:
 
+
 powershell
 .venv\Scripts\activate
-Si el entorno se activó correctamente, vas a ver (.venv) al inicio de la línea de comandos.
 
-3️⃣ Ejecutar la actualización
+Si el entorno se activó correctamente, vas a ver (.venv) al inicio de la línea de comandos.
+---
+###3️⃣ Ejecutar la actualización
 Corré el script principal:
 
 powershell
 Copy code
 python main.py
 El sistema comenzará a procesar los datos automáticamente y mostrará un resumen al finalizar.
-
+---
 🔍 ¿Qué hace el sistema?
 El proceso realiza las siguientes acciones:
 
@@ -52,7 +54,7 @@ Informa en pantalla cuántos registros fueron agregados.
 
 Esto garantiza que la información no se duplique y que el historial se mantenga consistente.
 
-🛠️ Solución de problemas
+###🛠️ Solución de problemas
 ❌ Error de conexión
 Verificá que tengas conexión a internet.
 
@@ -64,12 +66,13 @@ Si aparece un error indicando que falta algún paquete, ejecutá:
 powershell
 Copy code
 pip install -r requerimientos.txt
-✅ Recomendaciones
+---
+###✅ Recomendaciones
 Ejecutar siempre el script con el entorno virtual activado.
 
 No modificar la estructura de los datos sin validarlo previamente.
 
 Ante cambios importantes en las planillas, revisar el código antes de correr la actualización.
-
-📌 Notas
+---
+###📌 Notas
 Este sistema está pensado para ejecutarse de forma manual, pero puede adaptarse fácilmente para una ejecución automática programada.
