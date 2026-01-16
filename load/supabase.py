@@ -3,6 +3,8 @@ import pandas as pd
 from supabase import create_client, Client
 import time
 
+SUPABASE_URL="https://awdddoqejncrheuazyvs.supabase.co"
+SUPABASE_KEY="sb_secret_Nq2AyPNz4tN0-i3UU8jtYg_1R7nRlHQ"
 def cargar_supabase(cfg):
     url = os.getenv("SUPABASE_URL")
     key = os.getenv("SUPABASE_KEY")
